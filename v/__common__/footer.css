@@ -1,0 +1,17 @@
+
+footer .menu-tree--default .menu-tree__menu{
+    font-size:0.875rem;
+    line-height:1.25rem;
+  }
+  footer .menu-tree--default .menu-tree__menu--root{
+    display:flex;
+    flex-direction:column;
+    gap:1rem;
+  }
+  @media (min-width: 640px){
+  
+    footer .menu-tree--default .menu-tree__menu--root{
+      flex-direction:row;
+      gap:2rem;
+    }
+  }

@@ -1,0 +1,239 @@
+<header class="sticky top-0 bg-white py-1 border-b border-gray-200 shadow-md z-50">
+    <div class="max-w-screen-wide mx-auto px-4">
+        <div class="flex items-center justify-between">
+            <a href="/v/" class="flex items-center basis-1/4 grow">
+                <img src="https://xiaomingyan.com/static/v-logo.svg" alt="<%=title%>" class="size-6">
+                <span class="ml-1 text-2xl bg-gradient-to-r from-purple-500 to-blue-500 text-transparent bg-clip-text text-nowrap font-light"><%=title%></span>
+            </a>
+            <button
+                class="lg:hidden focus:outline-none peer"
+                aria-expanded="false"
+                aria-controls="mobile-menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <nav class="hidden lg:flex space-x-8 items-center basis-2/3 justify-end">
+                <div
+                    class="menu-tree menu-tree__wrapper menu-tree--horizontal"
+                    data--accordion="false"
+                    data--entry-height="56"
+                    style="--entry-height: 56px;">
+                    <ul class="menu-tree__menu menu-tree__menu--root">
+                        <li class="menu-tree__menu-item menu-tree__menu-item__depth-0">
+                            <div class="menu-tree__menu-item__entry menu-tree__menu-item__entry__depth-0">
+                                <a class="menu-tree__menu-item__link" href="/v/list/" title="发现">发现</a>
+                            </div>
+                        </li>
+                        <li class="menu-tree__menu-item menu-tree__menu-item__depth-0">
+                            <div class="menu-tree__menu-item__entry menu-tree__menu-item__entry__depth-0">
+                                <a class="menu-tree__menu-item__link" href="/v/editor/" title="创建图表">创建图表</a>
+                            </div>
+                        </li>
+                        <li class="menu-tree__menu-item menu-tree__menu-item__depth-0">
+                            <div class="menu-tree__menu-item__entry menu-tree__menu-item__entry__depth-0">
+                                <a class="menu-tree__menu-item__link" href="/v/editor/?type=infog" title="创建图文">创建图文</a>
+                            </div>
+                        </li>
+                        
+                        <!-- <li class="menu-tree__menu-item menu-tree__menu-item__depth-0 has-children">
+                            <div
+                                class="menu-tree__menu-item__entry menu-tree__menu-item__entry__depth-0 has-children">
+                                <span class="menu-tree__menu-item__link">AI图表</span>
+                            </div>
+                            <ul
+                                class="menu-tree__menu menu-tree__menu--children menu-tree__menu--collapsed">
+                                <li class="menu-tree__menu-item menu-tree__menu-item__depth-1">
+                                    <div class="menu-tree__menu-item__entry menu-tree__menu-item__entry__depth-1">
+                                        <a
+                                            class="menu-tree__menu-item__link"
+                                            href="/zh-hans/mind-map-generator"
+                                            title="思维导图">思维导图</a>
+                                    </div>
+                                </li>
+                                <li class="menu-tree__menu-item menu-tree__menu-item__depth-1">
+                                    <div class="menu-tree__menu-item__entry menu-tree__menu-item__entry__depth-1">
+                                        <a class="menu-tree__menu-item__link" href="/zh-hans/flowchart" title="流程图">流程图</a>
+                                    </div>
+                                </li>
+                                <li class="menu-tree__menu-item menu-tree__menu-item__depth-1">
+                                    <div class="menu-tree__menu-item__entry menu-tree__menu-item__entry__depth-1">
+                                        <a class="menu-tree__menu-item__link" href="/zh-hans/line-chart" title="折线图">折线图</a>
+                                    </div>
+                                </li>
+                                <li class="menu-tree__menu-item menu-tree__menu-item__depth-1">
+                                    <div class="menu-tree__menu-item__entry menu-tree__menu-item__entry__depth-1">
+                                        <a class="menu-tree__menu-item__link" href="/zh-hans/bar-graph" title="柱状图">柱状图</a>
+                                    </div>
+                                </li>
+
+                                <li class="menu-tree__menu-item menu-tree__menu-item__depth-1">
+                                    <div class="menu-tree__menu-item__entry menu-tree__menu-item__entry__depth-1">
+                                        <a class="menu-tree__menu-item__link" href="/zh-hans/pie-graph" title="饼图">饼图</a>
+                                    </div>
+                                </li>
+
+                                <li class="menu-tree__menu-item menu-tree__menu-item__depth-1">
+                                    <div class="menu-tree__menu-item__entry menu-tree__menu-item__entry__depth-1">
+                                        <a class="menu-tree__menu-item__link" href="/zh-hans/timeline" title="时间轴">时间轴</a>
+                                    </div>
+                                </li>
+
+                                <li class="menu-tree__menu-item menu-tree__menu-item__depth-1">
+                                    <div class="menu-tree__menu-item__entry menu-tree__menu-item__entry__depth-1">
+                                        <a class="menu-tree__menu-item__link" href="/zh-hans/gantt-chart" title="甘特图">甘特图</a>
+                                    </div>
+                                </li>
+
+                                <li class="menu-tree__menu-item menu-tree__menu-item__depth-1">
+                                    <div class="menu-tree__menu-item__entry menu-tree__menu-item__entry__depth-1">
+                                        <a class="menu-tree__menu-item__link" href="/zh-hans/er-diagram" title="ER图">ER图</a>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="menu-tree__menu-item menu-tree__menu-item__depth-0 has-children">
+                            <div
+                                class="menu-tree__menu-item__entry menu-tree__menu-item__entry__depth-0 has-children">
+                                <span class="menu-tree__menu-item__link">创建图表</span>
+                            </div>
+                            <ul
+                                class="menu-tree__menu menu-tree__menu--children menu-tree__menu--collapsed">
+
+                                <li class="menu-tree__menu-item menu-tree__menu-item__depth-1">
+                                    <div class="menu-tree__menu-item__entry menu-tree__menu-item__entry__depth-1">
+                                        <a class="menu-tree__menu-item__link" href="/zh-hans" title="EChart">EChart</a>
+                                    </div>
+                                </li>
+
+                                <li class="menu-tree__menu-item menu-tree__menu-item__depth-1">
+                                    <div class="menu-tree__menu-item__entry menu-tree__menu-item__entry__depth-1">
+                                        <a
+                                            class="menu-tree__menu-item__link"
+                                            href="/zh-hans/mermaid-generator"
+                                            title="Mermaid">Mermaid</a>
+                                    </div>
+                                </li>
+
+                                <li class="menu-tree__menu-item menu-tree__menu-item__depth-1">
+                                    <div class="menu-tree__menu-item__entry menu-tree__menu-item__entry__depth-1">
+                                        <a
+                                            class="menu-tree__menu-item__link"
+                                            href="/zh-hans/mind-map-generator"
+                                            title="思维导图">思维导图</a>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </li> -->
+
+                    </ul>
+                </div>
+
+                <div class="relative ml-3 group">
+                    <div class="">
+                        <button
+                            type="button"
+                            class="relative flex items-center max-w-xs rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            aria-expanded="false"
+                            aria-haspopup="true">
+                            <span class="sr-only">Open user menu</span>
+                            <svg class="svg-inline--fa fa-user size-8 rounded-full text-gray-500" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z"></path></svg>
+                            <!-- <img
+                                class="size-8 rounded-full text-gray-500 object-cover"
+                                src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&amp;f=y"
+                                loading="lazy"
+                                alt="avatar"> -->
+                        </button>
+                    </div>
+                    <div
+                        class="hidden group-hover:block pt-2 absolute origin-top-right right-0 z-50">
+                        <div
+                            class="w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                            role="menu"
+                            aria-orientation="vertical"
+                            aria-labelledby="user-menu-button"
+                            tabindex="-1">
+                            <div class="px-4 py-2 text-sm text-gray-700">你好, eviland@163.com</div>
+                            <hr class="divide-y divide-gray-200 my-1">
+                            <a
+                                href="/zh-hans/dashboard"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-100"
+                                role="menuitem">仪表盘</a>
+                            <a
+                                href="/zh-hans/user/5162"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-100"
+                                role="menuitem">设置</a>
+                            <a
+                                href="/zh-hans/user/logout?token=mFeDJLn7NlgwdGr5LbAw-htChbDOrKceF5Xlv8PEQjw"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-100"
+                                role="menuitem">退出</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <div
+                class="fixed inset-0 w-full h-full bg-black opacity-70 z-40 hidden peer-focus:block peer-focus-within:block transition-opacity duration-300 ease-in-out touch-none pointer-events-none"></div>
+            <div
+                class="fixed inset-y-0 left-0 w-[75vw] z-50 bg-white shadow-lg transform transition-transform -translate-x-full duration-300 ease-in-out lg:hidden peer-focus-within:translate-x-0 peer-focus:translate-x-0">
+                <div class="px-6 py-4 h-screen overflow-y-auto">
+                    <nav class="space-y-4">
+                        <div class="flex items-center flex-row justify-between">
+                            <svg class="svg-inline--fa fa-user size-8 rounded-full text-gray-500" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z"></path></svg>
+                            <!-- <img
+                                class="size-8 rounded-full text-gray-500 object-cover"
+                                src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&amp;f=y"
+                                loading="lazy"
+                                alt="avatar"> -->
+                        </div>
+                        <hr class="divide-y divide-gray-200">
+
+                        <div
+                            class="menu-tree menu-tree__wrapper menu-tree--vertical"
+                            data--accordion="false"
+                            data--entry-height="56"
+                            style="--entry-height: 56px;">
+
+                            <ul class="menu-tree__menu menu-tree__menu--root">
+                                <!-- <li class="menu-tree__menu-item menu-tree__menu-item__depth-0">
+                                    <div class="menu-tree__menu-item__entry menu-tree__menu-item__entry__depth-0">
+                                        <a class="menu-tree__menu-item__link" href="/zh-hans/explore" title="发现">发现</a>
+                                    </div>
+                                </li> -->
+                                <li class="menu-tree__menu-item menu-tree__menu-item__depth-0">
+                                    <div class="menu-tree__menu-item__entry menu-tree__menu-item__entry__depth-0">
+                                        <a class="menu-tree__menu-item__link" href="/v/editor/" title="创建图表">创建图表</a>
+                                    </div>
+                                </li>
+                                <li class="menu-tree__menu-item menu-tree__menu-item__depth-0">
+                                    <div class="menu-tree__menu-item__entry menu-tree__menu-item__entry__depth-0">
+                                        <a class="menu-tree__menu-item__link" href="/v/editor/?type=infog" title="创建图文">创建图文</a>
+                                    </div>
+                                </li>
+                                <!-- <li class="menu-tree__menu-item menu-tree__menu-item__depth-0">
+                                    <div class="menu-tree__menu-item__entry menu-tree__menu-item__entry__depth-0">
+                                        <a class="menu-tree__menu-item__link" href="/zh-hans/blog" title="博客">博客</a>
+                                    </div>
+                                </li> -->
+
+                            </ul>
+                        </div>
+
+                        <!-- <hr class="divide-y divide-gray-200">
+                        <a href="/zh-hans/dashboard" class="block text-gray-500 hover:text-gray-900">仪表盘</a>
+                        <a href="/zh-hans/user/5162" class="block text-gray-500 hover:text-gray-900">设置</a>
+                        <a
+                            href="/zh-hans/user/logout?token=mFeDJLn7NlgwdGr5LbAw-htChbDOrKceF5Xlv8PEQjw"
+                            class="block text-gray-500 hover:text-gray-900">退出</a> -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

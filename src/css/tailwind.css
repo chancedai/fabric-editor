@@ -1,0 +1,826 @@
+/* tailwind.css */
+@import "tailwindcss";
+/* @config "../../tailwind.config.js"; */
+
+  /* 通用按钮尺寸样式 */
+  @utility btn-base {
+    @apply inline-flex items-center justify-center px-5 py-1.5 text-sm rounded-lg transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  @utility btn-sm {
+    @apply px-3 py-1 text-xs;
+  }
+
+  @utility btn-lg {
+    @apply px-6 py-2 text-base;
+  }
+
+  /* 按钮类型 */
+  @utility btn-primary {
+    @apply btn-base bg-purple-600 text-white hover:bg-purple-700;
+  }
+
+  @utility btn-secondary {
+    @apply btn-base border border-slate-300 text-slate-800 hover:bg-slate-100;
+  }
+
+  @utility btn-text {
+    @apply text-purple-600 hover:underline text-sm transition disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  @utility btn-loading {
+    @apply btn-base bg-purple-600 text-white gap-2;
+  }
+
+  @utility btn-danger {
+    @apply btn-base bg-red-600 text-white hover:bg-red-700;
+  }
+
+  @utility btn-danger-outline {
+    @apply btn-base border border-red-600 text-red-600 hover:bg-red-100;
+  }
+
+  @utility btn-success {
+    @apply btn-base bg-green-600 text-white hover:bg-green-700;
+  }
+
+  @utility btn-warning {
+    @apply btn-base bg-yellow-500 text-white hover:bg-yellow-600;
+  }
+
+  /* 图标按钮，仅图标，无文本 */
+  @utility btn-icon {
+    @apply inline-flex items-center justify-center p-2 rounded-lg transition hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  @utility input {
+    @apply text-sm px-5 py-1.5 border border-slate-300 rounded-lg focus:border-purple-500 focus:outline-none transition-all;
+  }
+
+  @keyframes shake {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    20% {
+      transform: translateX(-4px);
+    }
+    40% {
+      transform: translateX(4px);
+    }
+    60% {
+      transform: translateX(-2px);
+    }
+    80% {
+      transform: translateX(2px);
+    }
+  }
+  
+  .shake {
+    animation: shake 0.5s ease-in-out;
+  }
+  
+  
+
+  .font-item{
+    @apply px-4 cursor-pointer flex items-center relative py-1 transition-all duration-300;
+  }
+
+
+  .sidebar-button {
+    @apply w-16 h-16 flex flex-col items-center justify-center p-1 rounded-md transition duration-200 ease-in-out;
+  }
+  
+  .sidebar-icon {
+    @apply text-2xl w-8 h-8 flex items-center justify-center rounded-lg;
+  }
+  
+  .sidebar-button:hover .sidebar-icon {
+    @apply shadow-lg bg-slate-200 text-black;
+  }
+  .sidebar-button[aria-selected="true"] .sidebar-icon {
+    @apply shadow-lg bg-purple-600 border-0 text-white;
+  }
+  
+
+  /* <button data-id="component:sidebar:template" class="sidebar-button">
+                  <div class="sidebar-icon group-aria-selected:text-green-500 vicon-template"></div>
+                  <div class="text-xs mt-1">模板</div>
+                </button>
+                <button data-id="component:sidebar:text" class="sidebar-button">
+                  <div class="sidebar-icon group-aria-selected:text-purple-500 vicon-text"></div>
+                  <div class="text-xs mt-1">文字</div>
+                </button>
+                <button data-id="component:sidebar:image" class="sidebar-button">
+                  <div class="sidebar-icon group-aria-selected:text-purple-500 vicon-imagesmode"></div>
+                  <div class="text-xs mt-1">图片</div>
+                </button>
+                <button data-id="component:sidebar:ornaments" class="sidebar-button">
+                  <div class="sidebar-icon group-aria-selected:text-orange-500 vicon-ornaments"></div>
+                  <div class="text-xs mt-1">素材</div>
+                </button>
+                <!-- 背景 -->
+                <button data-id="component:sidebar:backgrounds" class="sidebar-button">
+                  <div class="sidebar-icon group-aria-selected:text-purple-500 vicon-texture"></div>
+                  <div class="text-xs mt-1">背景</div>
+                </button>
+                <!-- overlay -->
+                <button data-id="component:sidebar:overlays" class="sidebar-button">
+                  <div class="sidebar-icon group-aria-selected:text-purple-500 vicon-overlay"></div>
+                  <div class="text-xs mt-1">前景</div>
+                </button>
+                <button data-id="component:sidebar:brush" class="sidebar-button">
+                  <div class="sidebar-icon group-aria-selected:text-red-500 vicon-brush"></div>
+                  <div class="text-xs mt-1">画笔</div>
+                </button>
+                <button data-id="component:sidebar:shapes" class="sidebar-button">
+                  <div class="sidebar-icon group-aria-selected:text-yellow-500 vicon-shapes"></div>
+                  <div class="text-xs mt-1">形状</div>
+                </button> */
+
+.shadow-a{
+  box-shadow: 0 4px 32px -14px rgba(64, 87, 109, 0.7);
+}
+#canvas {
+  filter: drop-shadow(0 2px 9px rgba(64, 87, 109, 0.4));
+  /* border: 10px solid #000; */
+}
+/* 禁用浏览器横向滚动返回上一页*/
+html{
+  overscroll-behavior: none;
+}
+
+/* .canvas-container{
+  box-sizing: content-box;
+  padding: 60px;
+}
+.canvas-container canvas{
+  left: 60px !important;
+  top: 60px !important;
+} */
+
+/* 基础滑块轨道（Tailwind 类做不到伪元素） */
+/* .range-thumb-purple::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 1.25rem; 
+  width: 1.25rem;
+  border-radius: 9999px;
+  background-color: #a855f7; 
+  cursor: pointer;
+  border: none;
+  margin-top: -0.140rem; 
+}
+
+.range-thumb-purple::-moz-range-thumb {
+  height: 1.25rem;
+  width: 1.25rem;
+  border-radius: 9999px;
+  background-color: #a855f7;
+  cursor: pointer;
+  border: none;
+} */
+div.noUi-target {
+  height: 8px;
+  border: none;
+  background-color: #e5e7eb; /* tailwind gray-200 */
+  border-radius: 9999px;
+}
+div.noUi-target .noUi-connects{
+  border-radius: 9999px;
+}
+div.noUi-target .noUi-connect {
+  /* 使用 purple-600  */
+  background: var(--color-purple-600, #a855f7);
+  border-radius: 9999px;
+}
+
+div.noUi-target .noUi-handle {
+  height: 24px;
+  width: 24px;
+  top: -8px;
+  right: -12px;
+  border-radius: 9999px;
+  background-color: #fff;
+  border: 2px solid var(--color-purple-600, #a855f7);
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  transition: box-shadow 0.2s ease;
+  cursor: pointer;
+}
+div.noUi-target .noUi-handle:before {
+  display: none;
+}
+div.noUi-target .noUi-handle:after {
+  display: none;
+}
+
+div.noUi-target .noUi-handle:hover {
+  box-shadow: 0 0 0 4px rgba(167, 139, 250, 0.4); /* tailwind purple-400 ring-4 */
+}
+
+div.noUi-target .noUi-handle:active {
+  box-shadow: 0 0 0 6px rgba(167, 139, 250, 0.6); /* tailwind purple-400 ring-6 */
+}
+
+div.grp-handler-close{
+  line-height: 7px;
+}
+
+/* 选框边缘线（实线框） */
+.cropper-view-box {
+  outline: 1px solid var(--color-purple-600, #a855f7) !important;
+}
+
+/* 选框内的虚线框 */
+.cropper-dashed {
+  border-color: var(--color-purple-600, #a855f7) !important;
+}
+
+/* 四个角的控制点 */
+.cropper-point {
+  background-color: var(--color-purple-600, #a855f7) !important;
+  border: 1px solid var(--color-purple-600, #a855f7) !important;
+}
+
+/* 控制点 hover 或激活状态下的样式（可选） */
+.cropper-point:hover {
+  background-color: #7e22ce !important; /* purple-700，可根据需要调整 */
+}
+
+/* 中间的拖拽线（如果启用了） */
+.cropper-line {
+  background-color: var(--color-purple-600, #a855f7) !important;
+}
+
+/* 移动指示器（当鼠标移动时显示） */
+.cropper-face {
+  background-color: rgba(147, 51, 234, 0.1) !important; /* 加点紫色透明背景 */
+  border: 1px solid var(--color-purple-600, #a855f7) !important;
+}
+
+
+/* input[type="text"] { */
+  /* font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  width: 60px;
+  text-align: center;
+  background-color: #fff; */
+  /* 使用 tailwindcss */
+  /* @apply text-sm px-2 py-1 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500; */
+/* } */
+
+
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+/* 全局设置 */
+/* @layer base {
+    html, body {
+      @apply font-light;
+    }
+  } */
+body{
+  /* 避免向右拖拽触发浏览器返回功能 */
+  overscroll-behavior-x: none;
+}
+
+button{
+  cursor: pointer;
+}
+
+/* 拖拽时鼠标变绿色加号 */
+html.dragging {
+  @apply cursor-copy;
+}
+html.dragging main {
+  @apply border-2 border-green-500 border-dashed;
+  
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 6px; 
+  height: 6px;
+  background: transparent;
+}
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2); 
+  border-radius: 999px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+  width: 6px;
+} 
+
+:root {
+  --grid-size: 1rem;
+}
+/* 彩色按钮，表明这是点击弹出拾色器的按钮 */
+.bg-colorpicker{
+  background-image: url('https://xiaomingyan.com/static/common/colorpicker.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.bg-checkerboard {
+  background-color: #ccc;
+  background-image: linear-gradient(
+      45deg,
+      #fff 25%,
+      transparent 25%,
+      transparent 75%,
+      #fff 75%,
+      #fff
+    ),
+    linear-gradient(
+      45deg,
+      #fff 25%,
+      transparent 25%,
+      transparent 75%,
+      #fff 75%,
+      #fff
+    );
+  background-size: var(--bg-size, 12px) var(--bg-size, 12px);
+  background-position: 0 0, calc(var(--bg-size, 12px) / 2) calc(var(--bg-size, 12px) / 2);
+}
+
+
+.bg-grid {
+  position: relative;
+  z-index: 0;
+}
+.bg-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-size: var(--grid-size) var(--grid-size);
+  background-position: center center;
+  background-image: linear-gradient(to right, #f3f4f6 1px, transparent 1px),
+    linear-gradient(to bottom, #f3f4f6 1px, transparent 1px);
+}
+@media screen and (min-width: 768px) {
+  .bg-grid::after {
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent,
+        #fff 0 100%,
+        transparent
+      ),
+      linear-gradient(to right, transparent, #fff 0 100%, transparent);
+    mask-image: linear-gradient(
+        to bottom,
+        transparent,
+        #fff 0 100%,
+        transparent
+      ),
+      linear-gradient(to right, transparent, #fff 0 100%, transparent);
+    -webkit-mask-composite: source-in, xor;
+    mask-composite: intersect;
+  }
+}
+
+img[data-src] {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+img:not([data-src]) {
+  opacity: 1;
+}
+
+div.pickr .pcr-button{
+  @apply w-6 h-6 top-0.5 left-1 rounded-md overflow-hidden;
+}
+
+div.tippy-content{
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'vicon';
+  src:
+    url('/src/fonts/vicon.ttf?jz13y7') format('truetype'),
+    url('/src/fonts/vicon.woff?jz13y7') format('woff'),
+    url('/src/fonts/vicon.svg?jz13y7#vicon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="vicon-"], [class*=" vicon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'vicon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.vicon-text-spacing:before {
+  content: "\e95b";
+}
+.vicon-curve:before {
+  content: "\e979";
+}
+.vicon-image-replace:before {
+  content: "\e97f";
+}
+.vicon-page-left:before {
+  content: "\e934";
+}
+.vicon-save:before {
+  content: "\e97a";
+}
+.vicon-print:before {
+  content: "\e97b";
+}
+.vicon-import:before {
+  content: "\e97c";
+}
+.vicon-file-open:before {
+  content: "\e97d";
+}
+.vicon-warp:before {
+  content: "\e97e";
+}
+.vicon-duplicate:before {
+  content: "\e92a";
+}
+.vicon-info:before {
+  content: "\e953";
+}
+.vicon-new:before {
+  content: "\e978";
+}
+.vicon-opacity:before {
+  content: "\e908";
+}
+.vicon-zoom-out:before {
+  content: "\e900";
+}
+.vicon-zoom-in:before {
+  content: "\e901";
+}
+.vicon-strokes:before {
+  content: "\e902";
+}
+.vicon-clipboard:before {
+  content: "\e903";
+}
+.vicon-shadow:before {
+  content: "\e904";
+}
+.vicon-settings-panel:before {
+  content: "\e905";
+}
+.vicon-color-picker:before {
+  content: "\e906";
+}
+.vicon-small-arrow:before {
+  content: "\e907";
+}
+.vicon-question:before {
+  content: "\e909";
+}
+.vicon-text:before {
+  content: "\e90a";
+}
+.vicon-element:before {
+  content: "\e90b";
+}
+.vicon-format-strikethrough:before {
+  content: "\e90c";
+}
+.vicon-account:before {
+  content: "\e90d";
+}
+.vicon-calm:before {
+  content: "\e90e";
+}
+.vicon-sad:before {
+  content: "\e90f";
+}
+.vicon-happy:before {
+  content: "\e910";
+}
+.vicon-format-painter:before {
+  content: "\e911";
+}
+.vicon-edit:before {
+  content: "\e912";
+}
+.vicon-draw:before {
+  content: "\e913";
+}
+.vicon-send:before {
+  content: "\e914";
+}
+.vicon-share:before {
+  content: "\e915";
+}
+.vicon-specialsence:before {
+  content: "\e916";
+}
+.vicon-monitoring:before {
+  content: "\e917";
+}
+.vicon-keyboard:before {
+  content: "\e918";
+}
+.vicon-mini-map:before {
+  content: "\e919";
+}
+.vicon-double-arrow-left:before {
+  content: "\e91a";
+}
+.vicon-ornaments:before {
+  content: "\e91b";
+}
+.vicon-arrow-back:before {
+  content: "\e91c";
+}
+.vicon-texture:before {
+  content: "\e91d";
+}
+.vicon-codesandbox:before {
+  content: "\e91e";
+}
+.vicon-logout:before {
+  content: "\e91f";
+}
+.vicon-palette:before {
+  content: "\e920";
+}
+.vicon-gradient:before {
+  content: "\e921";
+}
+.vicon-search:before {
+  content: "\e922";
+}
+.vicon-filter:before {
+  content: "\e923";
+}
+.vicon-json:before {
+  content: "\e924";
+}
+.vicon-component:before {
+  content: "\e925";
+}
+.vicon-codepen:before {
+  content: "\e926";
+}
+.vicon-arrow-left:before {
+  content: "\e927";
+}
+.vicon-arrow-range:before {
+  content: "\e928";
+}
+.vicon-camera:before {
+  content: "\e929";
+}
+.vicon-more:before {
+  content: "\e950";
+}
+.vicon-list:before {
+  content: "\e92b";
+}
+.vicon-download:before {
+  content: "\e92c";
+}
+.vicon-fit-screen:before {
+  content: "\e92d";
+}
+.vicon-upload:before {
+  content: "\e92e";
+}
+.vicon-cloud-upload:before {
+  content: "\e92f";
+}
+.vicon-flip:before {
+  content: "\e930";
+}
+.vicon-move-up:before {
+  content: "\e931";
+}
+.vicon-link:before {
+  content: "\e932";
+}
+.vicon-rotate:before {
+  content: "\e933";
+}
+.vicon-copy:before {
+  content: "\e935";
+}
+.vicon-delete:before {
+  content: "\e936";
+}
+.vicon-settings:before {
+  content: "\e937";
+}
+.vicon-eraser:before {
+  content: "\e938";
+}
+.vicon-visibility-off:before {
+  content: "\e939";
+}
+.vicon-visibility:before {
+  content: "\e93a";
+}
+.vicon-polygon:before {
+  content: "\e93b";
+}
+.vicon-heart:before {
+  content: "\e93c";
+}
+.vicon-star:before {
+  content: "\e93d";
+}
+.vicon-triangle:before {
+  content: "\e93e";
+}
+.vicon-circle:before {
+  content: "\e93f";
+}
+.vicon-rect:before {
+  content: "\e940";
+}
+.vicon-trending-flat:before {
+  content: "\e941";
+}
+.vicon-pen-size:before {
+  content: "\e942";
+}
+.vicon-aim:before {
+  content: "\e943";
+}
+.vicon-close:before {
+  content: "\e944";
+}
+.vicon-check:before {
+  content: "\e945";
+}
+.vicon-stacks:before {
+  content: "\e946";
+}
+.vicon-fullscreen-exit:before {
+  content: "\e947";
+}
+.vicon-fullscreen:before {
+  content: "\e948";
+}
+.vicon-lock-open:before {
+  content: "\e949";
+}
+.vicon-lock:before {
+  content: "\e94a";
+}
+.vicon-drag:before {
+  content: "\e94b";
+}
+.vicon-object-ungroup:before {
+  content: "\e94c";
+}
+.vicon-object-group:before {
+  content: "\e94d";
+}
+.vicon-recenter:before {
+  content: "\e94e";
+}
+.vicon-vertical-align-center:before {
+  content: "\e94f";
+}
+.vicon-overlay:before {
+  content: "\e951";
+}
+.vicon-selector:before {
+  content: "\e952";
+}
+.vicon-view-timeline:before {
+  content: "\e954";
+}
+.vicon-imagesmode:before {
+  content: "\e955";
+}
+.vicon-text-fields:before {
+  content: "\e956";
+}
+.vicon-layout-center:before {
+  content: "\e957";
+}
+.vicon-colors:before {
+  content: "\e958";
+}
+.vicon-brush:before {
+  content: "\e959";
+}
+.vicon-redo:before {
+  content: "\e95a";
+}
+.vicon-shopping-cart:before {
+  content: "\e95c";
+}
+.vicon-grid:before {
+  content: "\e95d";
+}
+.vicon-hd:before {
+  content: "\e95e";
+}
+.vicon-sd:before {
+  content: "\e95f";
+}
+.vicon-qrcode:before {
+  content: "\e960";
+}
+.vicon-spinner:before {
+  content: "\e961";
+}
+.vicon-magic-wand:before {
+  content: "\e962";
+}
+.vicon-contrast:before {
+  content: "\e963";
+}
+.vicon-crop:before {
+  content: "\e964";
+}
+.vicon-pencil:before {
+  content: "\e965";
+}
+.vicon-text-height:before {
+  content: "\e966";
+}
+.vicon-text-width:before {
+  content: "\e967";
+}
+.vicon-font-size:before {
+  content: "\e968";
+}
+.vicon-bold:before {
+  content: "\e969";
+}
+.vicon-underline:before {
+  content: "\e96a";
+}
+.vicon-italic:before {
+  content: "\e96b";
+}
+.vicon-strikethrough:before {
+  content: "\e96c";
+}
+.vicon-phone:before {
+  content: "\e96d";
+}
+.vicon-bell:before {
+  content: "\e96e";
+}
+.vicon-shapes:before {
+  content: "\e96f";
+}
+.vicon-template:before {
+  content: "\e970";
+}
+.vicon-layout-equalWidth:before {
+  content: "\e971";
+}
+.vicon-move-top:before {
+  content: "\e972";
+}
+.vicon-layout-distributeV:before {
+  content: "\e973";
+}
+.vicon-layout-left:before {
+  content: "\e974";
+}
+.vicon-layout-centerH:before {
+  content: "\e975";
+}
+.vicon-layout-bottom:before {
+  content: "\e976";
+}
+.vicon-image-edit:before {
+  content: "\e977";
+}
+.vicon-paragraph-left:before {
+  content: "\ea77";
+}
+.vicon-paragraph-center:before {
+  content: "\ea78";
+}
+.vicon-paragraph-right:before {
+  content: "\ea79";
+}
+.vicon-paragraph-justify:before {
+  content: "\ea7a";
+}

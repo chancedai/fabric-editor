@@ -1,0 +1,523 @@
+<div
+  id="editorWrapper"
+  node-type="editorWrapper"
+  class="grow flex flex-col gap-4 p-4 bg-slate-100 h-full"
+>
+  <!-- box-sizing: border-box; -->
+
+  <div node-type="splitContainer" class="flex grow overflow-hidden rounded-lg">
+    <!-- 左侧：代码编辑器 -->
+    <!-- <div node-type="editor" class="relative p-4 overflow-hidden">
+            <textarea class="w-full h-full border border-gray-400 p-2 resize-none"></textarea>
+        </div> -->
+    <div
+      node-type="editor"
+      id="editor"
+      class="relative flex overflow-hidden border-gray-300"
+    >
+      <!-- 编辑器容器 -->
+      <div node-type="innerEditor" class="grow w-full overflow-hidden rounded-lg mr-4"></div>
+    </div>
+
+    <!-- 拖拽条 -->
+    <div
+      node-type="dragBar"
+      class="w-2 cursor-ew-resize bg-slate-300 hover:bg-slate-400 rounded-lg flex items-center justify-center"
+    >
+      <div class="w-0.5 h-10 bg-white"></div>
+    </div>
+
+    <!-- 右侧：预览 iframe -->
+    <div
+      node-type="preview"
+      class="relative overflow-hidden box-border flex-1 touch-none select-none rounded-l pl-4"
+    >
+    <div node-type="iframeWrapper" class="relative m-auto transform top-1/2 -translate-y-1/2 select-none h-full w-full border-[0.5px] rounded-lg bg-slate-200 max-w-full max-h-full">
+        <!-- 用于缩放 iframe 的容器 -->
+        <div node-type="iframeContainer" class="absolute top-0 left-0 w-full h-full origin-top-left">
+            <iframe node-type="iframe" allowfullscreen sandbox="allow-scripts"
+                class="bg-transparent rounded-lg select-none w-full h-full"></iframe>
+        </div>
+    
+        <!-- 左侧拖拽条 -->
+        <div class="absolute top-1/2 left-0 w-2 h-12 cursor-ew-resize bg-slate-300 hover:bg-slate-400 rounded-lg flex items-center justify-center transform -translate-y-1/2">
+            <div class="w-0.5 h-10 bg-white"></div>
+        </div>
+        <!-- 右侧拖拽条 -->
+        <div class="absolute top-1/2 right-0 w-2 h-12 cursor-ew-resize bg-slate-300 hover:bg-slate-400 rounded-lg flex items-center justify-center transform -translate-y-1/2">
+            <div class="w-0.5 h-10 bg-white"></div>
+        </div>
+        <!-- 底部拖拽条 -->
+        <div class="absolute bottom-0 left-1/2 w-12 h-2 cursor-ns-resize bg-slate-300 hover:bg-slate-400 rounded-lg flex items-center justify-center transform -translate-x-1/2">
+            <div class="w-10 h-0.5 bg-white"></div>
+        </div>
+        <!-- 右下角拖拽条 -->
+        <div class="absolute bottom-0 right-0 w-3 h-3 cursor-se-resize bg-slate-300 hover:bg-slate-400 rounded-lg flex items-center justify-center">
+            <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
+        </div>
+    </div>
+    
+    </div>
+  </div>
+
+  <!-- 添加以下按钮，分享到 Codepen, 分享到 CodeSandbox, 下载示例，截图 -->
+  <div node-type="buttonWrapper" class="flex flex-wrap justify-center gap-2">
+    <!-- 分组 1：代码操作的（Undo/Redo） -->
+    <div class="flex gap-2">
+      <button
+        node-type="undo"
+        title="撤销"
+        class="flex items-center justify-center w-8 h-8 bg-purple-600 text-white rounded-full hover:bg-purple-600"
+      >
+        <svg
+          class="w-5 h-5"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="6018"
+        >
+          <path
+            d="M938.666667 659.626667a21.333333 21.333333 0 0 1-21.333334 23.04H853.333333a20.906667 20.906667 0 0 1-20.906666-19.2c-12.373333-120.32-141.226667-215.466667-298.666667-215.466667a337.066667 337.066667 0 0 0-221.44 78.08l107.52 107.52a20.906667 20.906667 0 0 1 6.4 15.36v12.373333a21.333333 21.333333 0 0 1-21.333333 21.333334h-298.666667a21.333333 21.333333 0 0 1-21.333333-21.333334v-298.666666A21.333333 21.333333 0 0 1 106.666667 341.333333h12.373333a20.906667 20.906667 0 0 1 15.36 6.4l103.253333 103.253334a442.453333 442.453333 0 0 1 298.666667-109.653334c212.48 0 388.266667 140.373333 402.346667 318.293334z"
+            p-id="6019"
+            fill="#ffffff"
+          ></path>
+        </svg>
+      </button>
+      <button
+        node-type="redo"
+        title="重做"
+        class="flex items-center justify-center w-8 h-8 bg-purple-600 text-white rounded-full hover:bg-purple-600"
+      >
+        <svg
+          class="w-5 h-5"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="11902"
+        >
+          <path
+            d="M489.813333 341.333333a442.453333 442.453333 0 0 1 298.666667 109.653334l103.253333-103.253334a20.906667 20.906667 0 0 1 13.226667-6.4h12.373333a21.333333 21.333333 0 0 1 21.333334 21.333334v298.666666a21.333333 21.333333 0 0 1-21.333334 21.333334h-298.666666a21.333333 21.333333 0 0 1-21.333334-21.333334v-12.373333a20.906667 20.906667 0 0 1 6.4-15.36l107.52-107.52a337.066667 337.066667 0 0 0-221.44-78.08c-156.586667 0-285.44 95.146667-298.666666 215.466667A20.906667 20.906667 0 0 1 170.666667 682.666667H106.666667a21.333333 21.333333 0 0 1-21.333334-23.04C99.413333 481.706667 275.2 341.333333 489.813333 341.333333z"
+            p-id="11903"
+            fill="#ffffff"
+          ></path>
+        </svg>
+      </button>
+    </div>
+  
+    <!-- 分组 2：代码分享的（保存、下载、分享、截图） -->
+    <div class="flex gap-2 flex-wrap">
+      <button
+        node-type="save"
+        title="保存"
+        class="flex items-center justify-center w-8 h-8 bg-green-500 text-white rounded-full hover:bg-green-600"
+      >
+        <svg
+          class="w-5 h-5"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="16436"
+        >
+          <path
+            d="M481.794621 325.068805L330.457009 476.406417a36.701199 36.701199 0 1 0 51.90807 51.90807L475.214725 439.120339v422.575555a36.554979 36.554979 0 0 0 36.554979 36.554979 36.554979 36.554979 0 0 0 36.554978-36.554979V433.271542l92.849647 92.849646a36.554979 36.554979 0 0 0 51.90807 0 36.554979 36.554979 0 0 0 0-51.17697L538.089288 319.951108a36.554979 36.554979 0 0 0-51.90807 0zM511.769704 950.890042a36.554979 36.554979 0 1 1-36.554979 36.554979 36.554979 36.554979 0 0 1 36.554979-36.554979zM511.769704 0.460593a292.439831 292.439831 0 0 0-305.599623 249.304955A250.036055 250.036055 0 0 0 0 486.641811 260.271449 260.271449 0 0 0 272.700142 731.560169h34.36168a33.630581 33.630581 0 1 0 0-66.530061h-34.36168a193.010288 193.010288 0 0 1-204.707881-178.388297 188.623691 188.623691 0 0 1 175.463898-176.194998h29.975083v-29.243983A225.909769 225.909769 0 0 1 511.769704 66.990654a225.909769 225.909769 0 0 1 239.069561 208.36338v31.437281h29.975083a188.623691 188.623691 0 0 1 175.463898 176.194998 193.010288 193.010288 0 0 1-204.707881 178.388297H716.477585a33.630581 33.630581 0 1 0 0 66.530061h34.36168A260.271449 260.271449 0 0 0 1023.539407 486.641811a250.036055 250.036055 0 0 0-206.17008-236.876263A292.439831 292.439831 0 0 0 511.769704 0.460593z"
+            p-id="16437"
+            fill="#ffffff"
+          ></path>
+        </svg>
+      </button>
+      <button
+        node-type="downloadCode"
+        title="下载示例"
+        class="flex items-center justify-center w-8 h-8 bg-green-500 text-white rounded-full hover:bg-green-600"
+      >
+        <svg
+          class="w-5 h-5"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="5105"
+        >
+          <path
+            d="M691.3 693.9c-24.7 0-44.8-20-44.8-44.8 0-24.7 20-44.8 44.8-44.8h40c190.6 0 176.8-274.4 0.2-268.1C671.2 37.2 208 145.1 299 445c-93-73.9-204.6 69.2-109.6 139.8 67.2 49.9 188.5-18.4 188.5 64.3 0 56.3-63.9 44.8-125.3 44.8-149.3 0-241.3-159.3-155.8-281.1 40.8-58.2 104.9-72.6 104.9-72.6C231.4 111.3 492.7-9.5 686.2 120c83.1 55.6 114.5 136.9 114.5 136.9 48.8 14.8 90.7 45.6 119.2 86.4 96 137.3 21.5 350.6-228.6 350.6zM514.2 335.8c0.2 0 0.3 0.1 0.5 0.1s0.3-0.1 0.5-0.1h-1z m177.1 421.1c0-17.5-45.8-17.3-63.3 0.1l-32.8 32.9c-14.1 14.1-38.2 4.2-38.2-15.8V380.6c0-24.5-17.9-44.4-42.3-44.7-24.5 0.3-47.2 20.1-47.2 44.7v393.5c0 19.9-24.1 29.9-38.2 15.8l-32.8-42.1c-17.5-17.5-45.3-9.3-62.8-9.3h-0.2c-17.5 44.8-17.6 55.1-0.1 72.6L449 931.5c35 35 91.6 37.3 126.6 2.3l115.7-114.6c17.5-17.5 0-45.2 0-62.7v0.4z"
+            p-id="5106"
+            fill="#ffffff"
+          ></path>
+        </svg>
+      </button>
+      <button
+        node-type="shareToCodePen"
+        title="分享到 CodePen"
+        class="flex items-center justify-center w-8 h-8 bg-green-500 text-white rounded-full hover:bg-green-600"
+      >
+      <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none"
+      stroke="none">
+      <path
+          d="M21.838 8.445c0-.001-.001-.001 0 0l-.003-.004l-.001-.001v-.001a.809.809 0 0 0-.235-.228l-9.164-6.08a.834.834 0 0 0-.898 0L2.371 8.214A.786.786 0 0 0 2 8.897v6.16a.789.789 0 0 0 .131.448v.001l.002.002l.01.015v.002h.001l.001.001l.001.001c.063.088.14.16.226.215l9.165 6.082a.787.787 0 0 0 .448.139a.784.784 0 0 0 .45-.139l9.165-6.082a.794.794 0 0 0 .371-.685v-6.16a.793.793 0 0 0-.133-.452zm-9.057-4.172l6.953 4.613l-3.183 2.112l-3.771-2.536V4.273zm-1.592 0v4.189l-3.771 2.536l-3.181-2.111l6.952-4.614zm-7.595 6.098l2.395 1.59l-2.395 1.611v-3.201zm7.595 9.311l-6.96-4.617l3.195-2.15l3.765 2.498v4.269zm.795-5.653l-3.128-2.078l3.128-2.105l3.131 2.105l-3.131 2.078zm.797 5.653v-4.27l3.766-2.498l3.193 2.15l-6.959 4.618zm7.597-6.11l-2.396-1.611l2.396-1.59v3.201z"
+          fill="currentColor"></path>
+  </svg>
+      </button>
+      <button
+        node-type="shareToCodeSandbox"
+        title="分享到 CodeSandbox"
+        class="flex items-center justify-center w-8 h-8 bg-green-500 text-white rounded-full hover:bg-green-600"
+      >
+        <svg
+          class="w-5 h-5"
+          viewBox="0 0 512 512"
+          fill="none"
+          stroke="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M69 153.99L256 263.99M256 263.99L443 153.99M256 263.99V463.99M448 341.37V170.61C447.993 165.021 446.523 159.531 443.735 154.687C440.947 149.843 436.939 145.814 432.11 143L280.11 54.54C272.787 50.2765 264.464 48.0303 255.99 48.0303C247.516 48.0303 239.193 50.2765 231.87 54.54L79.89 143C75.0609 145.814 71.053 149.843 68.2652 154.687C65.4773 159.531 64.0068 165.021 64 170.61V341.37C64.0033 346.962 65.4722 352.456 68.2602 357.304C71.0482 362.152 75.058 366.185 79.89 369L231.89 457.46C239.215 461.718 247.537 463.96 256.01 463.96C264.483 463.96 272.805 461.718 280.13 457.46L432.13 369C436.958 366.182 440.964 362.148 443.748 357.301C446.533 352.453 447.999 346.96 448 341.37Z"
+            stroke="currentColor"
+            stroke-width="38"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+        </svg>
+      </button>
+      <button
+        node-type="captureScreenshot"
+        title="截图"
+        class="flex items-center justify-center w-8 h-8 bg-green-500 text-white rounded-full hover:bg-green-600"
+      >
+        <svg
+          class="w-5 h-5"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="7136"
+        >
+          <path
+            d="M355.712 271.872l33.536-95.872h245.504l33.536 95.872c6.72 19.2 24.96 32.128 45.312 32.128h156.8c25.216 0 41.6 18.88 41.6 37.312v469.376c0 18.432-16.384 37.312-41.6 37.312H153.6c-25.216 0-41.6-18.88-41.6-37.312V341.312c0-18.432 16.384-37.312 41.6-37.312h156.8a48 48 0 0 0 45.312-32.128z m31.808-191.872c-38.464 0-74.624 23.488-87.808 61.312L276.352 208H153.6c-73.792 0-137.6 57.536-137.6 133.312v469.376c0 75.776 63.872 133.312 137.6 133.312h716.8c73.728 0 137.6-57.536 137.6-133.312V341.312c0-75.776-63.872-133.312-137.6-133.312h-122.752l-23.36-66.688a92.672 92.672 0 0 0-87.808-61.312h-248.96zM403.2 597.312c0-53.76 46.464-101.312 108.8-101.312 62.4 0 108.928 47.552 108.928 101.312S574.4 698.688 512 698.688c-62.4 0-108.864-47.552-108.864-101.376zM512 400c-110.848 0-204.8 86.144-204.8 197.312 0 111.232 93.952 197.376 204.8 197.376 110.976 0 204.928-86.144 204.928-197.376C716.928 486.144 622.976 400 512 400z"
+            p-id="7137"
+            fill="#ffffff"
+          ></path>
+        </svg>
+      </button>
+    </div>
+  
+    <!-- 分组 3：预览相关（全屏、平分模式、代码模式、预览模式、缩放、调整宽高） -->
+    <div class="flex gap-2 flex-wrap items-center">
+      
+      <button
+        node-type="toggleMaxPreview"
+        title="预览模式"
+        class="flex items-center justify-center w-8 h-8 bg-slate-300 text-white rounded-full hover:bg-blue-600"
+      >
+        <span class="text-xl">←</span>
+      </button>
+      <button
+        node-type="toggleSplit"
+        title="平分模式"
+        class="flex items-center justify-center w-8 h-8 bg-slate-300 text-white rounded-full hover:bg-blue-600"
+      >
+        <span class="text-xl">↔</span>
+      </button>
+      <button
+        node-type="toggleMaxCode"
+        title="代码模式"
+        class="flex items-center justify-center w-8 h-8 bg-slate-300 text-white rounded-full hover:bg-blue-600"
+      >
+        <span class="text-xl">→</span>
+      </button>
+      <button
+        node-type="fullscreen"
+        title="全屏"
+        class="flex items-center justify-center w-8 h-8 bg-blue-500 text-white rounded-full hover:bg-blue-600"
+      >
+        <svg node-type="fullscreenIcon" class="h-5 w-5" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6043" width="24" height="24"><path d="M149.333333 394.666667c17.066667 0 32-14.933333 32-32v-136.533334l187.733334 187.733334c6.4 6.4 14.933333 8.533333 23.466666 8.533333s17.066667-2.133333 23.466667-8.533333c12.8-12.8 12.8-32 0-44.8l-187.733333-187.733334H362.666667c17.066667 0 32-14.933333 32-32s-14.933333-32-32-32H149.333333c-4.266667 0-8.533333 0-10.666666 2.133334-8.533333 4.266667-14.933333 10.666667-19.2 17.066666-2.133333 4.266667-2.133333 8.533333-2.133334 12.8v213.333334c0 17.066667 14.933333 32 32 32zM874.666667 629.333333c-17.066667 0-32 14.933333-32 32v136.533334L642.133333 597.333333c-12.8-12.8-32-12.8-44.8 0s-12.8 32 0 44.8l200.533334 200.533334H661.333333c-17.066667 0-32 14.933333-32 32s14.933333 32 32 32h213.333334c4.266667 0 8.533333 0 10.666666-2.133334 8.533333-4.266667 14.933333-8.533333 17.066667-17.066666 2.133333-4.266667 2.133333-8.533333 2.133333-10.666667V661.333333c2.133333-17.066667-12.8-32-29.866666-32zM381.866667 595.2l-200.533334 200.533333V661.333333c0-17.066667-14.933333-32-32-32s-32 14.933333-32 32v213.333334c0 4.266667 0 8.533333 2.133334 10.666666 4.266667 8.533333 8.533333 14.933333 17.066666 17.066667 4.266667 2.133333 8.533333 2.133333 10.666667 2.133333h213.333333c17.066667 0 32-14.933333 32-32s-14.933333-32-32-32h-136.533333l200.533333-200.533333c12.8-12.8 12.8-32 0-44.8s-29.866667-10.666667-42.666666 0zM904.533333 138.666667c0-2.133333 0-2.133333 0 0-4.266667-8.533333-10.666667-14.933333-17.066666-17.066667-4.266667-2.133333-8.533333-2.133333-10.666667-2.133333H661.333333c-17.066667 0-32 14.933333-32 32s14.933333 32 32 32h136.533334l-187.733334 187.733333c-12.8 12.8-12.8 32 0 44.8 6.4 6.4 14.933333 8.533333 23.466667 8.533333s17.066667-2.133333 23.466667-8.533333l187.733333-187.733333V362.666667c0 17.066667 14.933333 32 32 32s32-14.933333 32-32V149.333333c-2.133333-4.266667-2.133333-8.533333-4.266667-10.666666z" fill="#ffffff" p-id="6044" data-spm-anchor-id="a313x.search_index.0.i5.21e13a81lKUUmb" class="selected"></path></svg>
+            <svg node-type="exitFullscreenIcon" class="h-5 w-5 hidden" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4350" width="24" height="24"><path d="M313.6 358.4H177.066667c-17.066667 0-32 14.933333-32 32s14.933333 32 32 32h213.333333c4.266667 0 8.533333 0 10.666667-2.133333 8.533333-4.266667 14.933333-8.533333 17.066666-17.066667 2.133333-4.266667 2.133333-8.533333 2.133334-10.666667v-213.333333c0-17.066667-14.933333-32-32-32s-32 14.933333-32 32v136.533333L172.8 125.866667c-12.8-12.8-32-12.8-44.8 0-12.8 12.8-12.8 32 0 44.8l185.6 187.733333zM695.466667 650.666667H832c17.066667 0 32-14.933333 32-32s-14.933333-32-32-32H618.666667c-4.266667 0-8.533333 0-10.666667 2.133333-8.533333 4.266667-14.933333 8.533333-17.066667 17.066667-2.133333 4.266667-2.133333 8.533333-2.133333 10.666666v213.333334c0 17.066667 14.933333 32 32 32s32-14.933333 32-32v-136.533334l200.533333 200.533334c6.4 6.4 14.933333 8.533333 23.466667 8.533333s17.066667-2.133333 23.466667-8.533333c12.8-12.8 12.8-32 0-44.8l-204.8-198.4zM435.2 605.866667c-4.266667-8.533333-8.533333-14.933333-17.066667-17.066667-4.266667-2.133333-8.533333-2.133333-10.666666-2.133333H192c-17.066667 0-32 14.933333-32 32s14.933333 32 32 32h136.533333L128 851.2c-12.8 12.8-12.8 32 0 44.8 6.4 6.4 14.933333 8.533333 23.466667 8.533333s17.066667-2.133333 23.466666-8.533333l200.533334-200.533333V832c0 17.066667 14.933333 32 32 32s32-14.933333 32-32V618.666667c-2.133333-4.266667-2.133333-8.533333-4.266667-12.8zM603.733333 403.2c4.266667 8.533333 8.533333 14.933333 17.066667 17.066667 4.266667 2.133333 8.533333 2.133333 10.666667 2.133333h213.333333c17.066667 0 32-14.933333 32-32s-14.933333-32-32-32h-136.533333L896 170.666667c12.8-12.8 12.8-32 0-44.8-12.8-12.8-32-12.8-44.8 0l-187.733333 187.733333V177.066667c0-17.066667-14.933333-32-32-32s-32 14.933333-32 32v213.333333c2.133333 4.266667 2.133333 8.533333 4.266666 12.8z" fill="#ffffff" p-id="4351" data-spm-anchor-id="a313x.search_index.0.i3.21e13a818fQNEw" class="selected"></path></svg>
+      </button>
+      <!-- 缩放选择器 -->
+      <div class="relative">
+        <select node-type="zoomSelect" title="缩放" class="appearance-none flex items-center pl-2 pr-5 py-1 bg-blue-500 text-blue-500 rounded shadow hover:bg-blue-600 hover:text-blue-600 cursor-pointer">
+          <option value="50">50%</option>
+          <option value="75">75%</option>
+          <option value="100" selected="">100%</option>
+          <option value="125">125%</option>
+          <option value="150">150%</option>
+          <option value="200">200%</option>
+        </select>
+        
+        <span node-type="zoomDisplay" class="absolute inset-y-0 left-2 flex items-center pointer-events-none text-white">100%</span>
+        
+        <div class="absolute inset-y-0 right-2 flex items-center pointer-events-none">
+          <svg class="w-3 h-3 text-white" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+          </svg>
+        </div>
+      </div>
+      
+      <!-- 调整宽高 -->
+      <div class="flex items-center gap-1">
+            <input
+            node-type="widthInput"
+            type="number"
+            step="1"
+            min="100" 
+            max="9999"
+            placeholder="宽度"
+            class="w-16 h-8 px-1 text-center text-gray-700 bg-white border border-blue-300 rounded focus:ring-1 focus:ring-blue-500 outline-none transition appearance-auto"
+            />
+            <span class="text-sm text-gray-500">X</span>
+            <input
+            node-type="heightInput"
+            type="number"
+            step="1"
+            min="100" 
+            max="9999"
+            placeholder="高度"
+            class="w-16 h-8 px-1 text-center text-gray-700 bg-white border border-blue-300 rounded focus:ring-1 focus:ring-blue-500 outline-none transition appearance-auto"
+            />
+        </div>
+    
+      
+    </div>
+  </div>
+  
+  
+
+  <div class="relative" node-type="adjustWrapper">
+    <div class="group conic-gradient-border relative">
+      <textarea
+        node-type="adjustInput"
+        class="flex w-full border border-input shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm min-h-20 resize-none rounded-sm bg-background p-4 pl-10 text-lg focus:bg-background focus:ring-0 focus-visible:ring-0"
+        placeholder="请输入需求..."
+      ></textarea>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewbox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-sparkles absolute -translate-y-1/4 left-4 top-[1.35rem] h-5 w-5 text-muted-foreground transition-colors group-focus-within:text-blue-500"
+      >
+        <path
+          d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"
+        ></path>
+        <path d="M20 3v4"></path>
+        <path d="M22 5h-4"></path>
+        <path d="M4 17v2"></path>
+        <path d="M5 18H3"></path>
+      </svg>
+    </div>
+    <div class="absolute flex gap-2 bottom-4 right-4">
+      <button
+        node-type="adjustSubmit"
+        class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
+        disabled=""
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewbox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-sparkles mr-2 h-4 w-4"
+        >
+          <path
+            d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"
+          ></path>
+          <path d="M20 3v4"></path>
+          <path d="M22 5h-4"></path>
+          <path d="M4 17v2"></path>
+          <path d="M5 18H3"></path>
+          </svg>提交
+      </button>
+    </div>
+  </div>
+
+  <div
+    node-type="chartModal"
+    class="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center hidden"
+  >
+    <div
+      class="bg-white rounded-lg shadow-xl w-[640px] max-h-[100vh] overflow-y-auto"
+    >
+      <!-- 头部 -->
+      <div class="bg-slate-100 px-4 py-3 rounded-t-lg border-b">
+        <h2 class="text-lg font-semibold text-gray-800">图表信息</h2>
+      </div>
+
+      <div class="p-4 space-y-4">
+        <!-- 基础信息和标签信息合并 -->
+        <div class="space-y-4 p-3 bg-slate-50 rounded-md border border-gray-200">
+          <!-- 标题和类型部分 -->
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-sm font-medium text-gray-700"
+                >标题（英文）
+                <span class="text-xs text-gray-500">(可为空)</span>
+              </label>
+              <input
+                node-type="titleInput"
+                type="text"
+                class="w-full p-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none focus:border-blue-500 transition-all duration-200"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700"
+                >标题（中文）
+                <span class="text-xs text-gray-500">(可为空)</span>
+              </label>
+              <input
+                node-type="titleZhInput"
+                type="text"
+                class="w-full p-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none focus:border-blue-500 transition-all duration-200"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-sm font-medium text-gray-700"
+                >类型
+                <span class="text-xs text-gray-500">(必选)</span>
+              </label>
+              <select
+                node-type="typeInput"
+                class="w-full p-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none focus:border-blue-500 transition-all duration-200"
+              >
+                <option value="">请选择类型</option>
+                <option value="echarts">ECharts</option>
+                <option value="infog">InfoG</option>
+                <option value="jsmind">JsMind</option>
+                <option value="vega">Vega</option>
+                <option value="mermaid">Mermaid</option>
+                <option value="plantuml">PlantUML</option>
+                <option value="d3">D3</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700"
+                >子类型
+                <span class="text-xs text-gray-500">(仅限英文，可为空)</span>
+              </label>
+              <input
+                node-type="subTypeInput"
+                type="text"
+                class="w-full p-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none focus:border-blue-500 transition-all duration-200"
+              />
+            </div>
+          </div>
+
+          <!-- 标签 和 是否免费 并排 -->
+          <div class="grid grid-cols-2 gap-3">
+            <!-- 标签 -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700"
+                >标签
+                <span class="text-xs text-gray-500"
+                  >(英文逗号分隔，可为空)</span
+                >
+              </label>
+              <input
+                node-type="tagsInput"
+                type="text"
+                class="w-full p-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none focus:border-blue-500 transition-all duration-200"
+                placeholder="tag1, tag2"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700"
+                >是否免费
+              </label>
+              <label
+                class="relative inline-flex mt-2 items-center cursor-pointer"
+              >
+                <!-- 这里加 checked 让开关默认是打开状态 -->
+                <input
+                  node-type="isFreeInput"
+                  type="checkbox"
+                  class="sr-only peer"
+                  checked
+                />
+                <div
+                  class="w-11 h-6 bg-slate-300 peer-focus:ring-2 peer-focus:ring-blue-500 rounded-full peer peer-checked:bg-blue-500 transition-all duration-200"
+                ></div>
+                <div
+                  class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full shadow-md transition-all duration-200 peer-checked:translate-x-5"
+                ></div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 封面部分 -->
+        <div class="space-y-4 p-3 bg-slate-50 rounded-md border border-gray-200">
+          <div>
+            <label class="block text-sm font-medium text-gray-700"
+              >封面图片
+              <span class="text-xs text-gray-500"
+                >(可为空，上传或输入 URL)</span
+              >
+            </label>
+            <input
+              node-type="coverInput"
+              type="text"
+              class="w-full p-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none focus:border-blue-500 transition-all duration-200"
+              placeholder="https://example.com/image.jpg"
+            />
+            <input
+              type="file"
+              node-type="uploadCoverInput"
+              accept="image/png, image/jpeg, image/svg+xml"
+              class="mt-1 text-sm text-gray-600"
+            />
+            <p node-type="uploadMessage" class="text-xs text-gray-500 mt-1"></p>
+            <!-- 图片预览 -->
+            <div
+              node-type="coverPreviewContainer"
+              class="mt-3 hidden flex justify-center"
+            >
+              <img
+                node-type="coverPreview"
+                class="rounded-md shadow-md border border-gray-300 max-w-[30%] max-h-[30%] object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 底部按钮区域 -->
+      <div
+        class="bg-slate-100 px-4 py-3 rounded-b-lg border-t flex justify-end space-x-3"
+      >
+        <button
+          node-type="cancelBtn"
+          class="px-3 py-2 bg-slate-300 text-gray-700 rounded-md hover:bg-slate-400 transition"
+        >
+          取消
+        </button>
+        <button
+          node-type="updateBtn"
+          class="px-3 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition"
+        >
+          修改
+        </button>
+        <button
+          node-type="deleteBtn"
+          class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition"
+        >
+          删除
+        </button>
+        <button
+          node-type="createBtn"
+          class="px-3 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition"
+        >
+          新建
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

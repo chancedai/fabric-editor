@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/hoem/fav.ico">
+  <title>小名言</title>
+  <style>
+  body {
+    background: #f2f2f2; /* 背景色 */
+    font-family: "PingFang SC", "Helvetica Neue", "Helvetica", "Arial", "Microsoft YaHei", "微软雅黑", sans-serif;
+    padding: 0;
+    margin: 0;
+    color: #fff;
+    font-weight: 400;
+  }
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+
+
+.container {
+  min-height: 100vh;
+  overflow: hidden;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+.bg-a {
+      width: 100%;
+      height: 100%;
+      background-position: center;
+      background-size: cover;
+      /* filter: blur(3px); */
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 0;
+      opacity: 0.5;
+      transition: all 0.3s;
+    }
+
+h1 {
+  font-size: 32px;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-weight: 400;
+}
+
+.qrcode {
+  width: 120px;
+  height: 120px;
+  padding: 5px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 100%;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.slogan {
+  font-size: 18px;
+  opacity: 0.8;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* 不换行 */
+  white-space: nowrap;
+  line-height: 1.8em;
+}
+.slogan em{
+  font-style: normal;
+  font-weight: bold;
+  color: green;
+  padding-right: 3px;
+}
+/* 垂直居中 */
+.hd{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+}
+.bd {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  font-size: 12px;
+  opacity: 0.5;
+  
+}
+
+/* 其他样式（版权信息和联系方式）可以根据需求添加和调整 */
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="bg" class="bg-a"></div>
+    <div class="hd">
+      <h1>小名言</h1>
+    </div>
+    <div class="bd">
+      <p class="copyright">版权所有 &copy; 2023 小名言 <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">京ICP备2023003321号-2</a></p>
+    </div>
+  </div>
+  <script>
+    (function () {
+      // 在导航栏中添加滚动效果
+const navLinks = document.querySelectorAll('.nav-links li a');
+for (const link of navLinks) {
+  link.addEventListener('click', smoothScroll);
+}
+
+function smoothScroll(event) {
+  event.preventDefault();
+  const targetId = event.target.getAttribute('href');
+  const targetSection = document.querySelector(targetId);
+  window.scrollTo({
+    top: targetSection.offsetTop,
+    behavior: 'smooth'
+  });
+}
+
+// 添加动画效果
+const services = document.querySelectorAll('.service');
+const advantages = document.querySelectorAll('.advantage');
+
+window.addEventListener('scroll', fadeInElements);
+
+function fadeInElements() {
+  for (const service of services) {
+    if (isElementInViewport(service)) {
+      service.classList.add('fade-in');
+    }
+  }
+
+  for (const advantage of advantages) {
+    if (isElementInViewport(advantage)) {
+      advantage.classList.add('fade-in');
+    }
+  }
+}
+
+function isElementInViewport(element) {
+  const rect = element.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
+
+
+let colors = [
+  "#5A5C75",
+  "#5d5d5d",
+  "#5E6D7B",
+  "#6d7993",
+  "#6e665c",
+  "#76AFD4",
+  "#787878",
+  "#7F7F7F",
+  "#8298BA",
+  "#8596a2",
+  "#8c8c8c",
+  "#9ca3a4",
+  "#A4A4A4",
+  "#a66b6b",
+  "#A8B2B2",
+  "#A9B0B0",
+  "#B5B2A8",
+  "#B8A79F",
+  "#bc8f8f",
+  "#c08e80",
+  "#C7A589",
+  "#CEAF88",
+  "#d2b48c",
+  "#D5A986"
+];
+const getRandomItemFromArray = (() => {
+  let lastItem;
+  function getRandomItem(array) {
+    if (typeof array === 'undefined' || array.length === 0) { }
+    let index = Math.floor(Math.random() * array.length);
+    if (array.length > 1 && array[index] === lastItem) {
+      return getRandomItem(array);
+    }
+    lastItem = array[index];
+    return lastItem;
+  }
+  return getRandomItem;
+})();
+
+// 获取同类的的两种随机颜色，都是暗色或者都是亮色
+function getRandomColors() {
+  // 要保证两种颜色不一样
+  const color1 = getRandomItemFromArray(colors);
+  const color2 = getRandomItemFromArray(colors);
+
+  return [color1, color2];
+}
+
+const backgroundTypes = ['linear-gradient', 'radial-gradient'];
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function generateRandomRadialBackground({
+  positionXMin = 0,
+  positionXMax = 100,
+  positionYMin = 0,
+  positionYMax = 100,
+} = {}) {
+  const shape = `ellipse`;
+  const positionX = `${getRandomInt(positionXMin, positionXMax)}%`;
+  const positionY = `${getRandomInt(positionYMin, positionYMax)}%`;
+  const [color1, color2] = getRandomColors();
+  const background = `radial-gradient(${shape} at ${positionX} ${positionY}, ${color1}, ${color2})`;
+  return background;
+}
+
+function generateRandomBackground() {
+  const angle = getRandomInt(0, 360);
+  const type = getRandomItemFromArray(backgroundTypes);
+  if (type === 'linear-gradient') {
+    // 获取两种颜色
+    const [color1, color2] = getRandomColors();
+    return `linear-gradient(${angle}deg, ${color1} 0%, ${color2} 100%)`;
+  } else if (type === 'radial-gradient') {
+    return generateRandomRadialBackground();
+  } else {
+    return getRandomItemFromArray(colors)
+  }
+}
+
+const body = document.querySelector('body');
+const bg = document.getElementById('bg');
+
+
+const changeBackground = () => {
+  body.style.background = generateRandomBackground();
+}
+const changeBackgroundImage = () => {
+  const url = '/home/bg/'+getRandomItemFromArray([0,1,2,3,4,5,6,7,8,9])+'.jpeg';
+  const img = new Image();
+  img.onload = function() {
+    bg.style.backgroundImage = 'url('+ url +')';
+  }
+  img.src = url;
+}
+changeBackground();
+changeBackgroundImage();
+setInterval(changeBackgroundImage, 10000);
+setInterval(changeBackground, 30000);
+
+// 如果在移动设备上，点击页面就跳转到小程序
+if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
+  let count = 0;
+  const span = document.createElement('span');
+  document.querySelector('.slogan').appendChild(span);
+  // 6秒后自动打开小程序
+  setInterval(() => {
+    if(count < 6){
+      count++;
+      span.innerHTML = ' <em>' + (6 - count) + '</em>秒后自动打开 >>';
+    }else{
+      location.href = '/v';
+    }
+  }, 1000);
+  body.onclick = (event) => {
+    location.href = '/v';
+  }
+}else{
+  body.onclick = (event) => {
+    changeBackground();
+    changeBackgroundImage();
+  }
+}
+
+
+
+
+    })()
+  </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+@import "../__common__/header.css";
+@import "../__common__/footer.css";
+.design-item {
+    break-inside: avoid;
+  }
+  .column-span-all {
+    -webkit-column-span: all;
+    column-span: all;
+  }
+  

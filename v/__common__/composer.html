@@ -1,0 +1,159 @@
+<div id="composer" class="py-12 max-w-screen-xl mx-auto px-4 sm:px-8 xl:px-12 - class">
+    <div class="-library -library__aigc-composer">
+        <div class="relative">
+            <label for="input" class="text-sm text-gray-500">请在输入框中，详细描述您想要创建的图表和数据，越详细越好，然后点击 AI 生成按钮。</label>
+            <div class="group conic-gradient-border relative">
+                <textarea node-type="input"
+                    class="flex w-full border border-input shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm min-h-40 resize-none rounded-sm bg-background p-4 pl-10 text-lg focus:bg-background focus:ring-0 focus-visible:ring-0"
+                    placeholder="描述你想创建的内容..."></textarea>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-sparkles absolute -translate-y-1/4 left-4 top-[1.35rem] h-5 w-5 text-muted-foreground transition-colors group-focus-within:text-blue-500">
+                    <path
+                        d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z">
+                    </path>
+                    <path d="M20 3v4"></path>
+                    <path d="M22 5h-4"></path>
+                    <path d="M4 17v2"></path>
+                    <path d="M5 18H3"></path>
+                </svg>
+            </div>
+            <div class="absolute flex gap-2 bottom-4 right-4">
+                <button node-type="submit"
+                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
+                    disabled="">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-sparkles mr-2 h-4 w-4">
+                        <path
+                            d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z">
+                        </path>
+                        <path d="M20 3v4"></path>
+                        <path d="M22 5h-4"></path>
+                        <path d="M4 17v2"></path>
+                        <path d="M5 18H3"></path>
+                    </svg>AI 生成</button>
+            </div>
+        </div>
+
+        <div node-type="result" class="flex flex-col gap-4 mt-8 p-4 rounded-xl bg-slate-100 hidden">
+            <div node-type="preview" class="w-full overflow-hidden h-[600px]"
+                style="opacity: 1; height: auto; transition: height 0.3s ease 0s;">
+                <iframe node-type="iframe" allowfullscreen sandbox="allow-scripts"
+                    class="h-[400px] w-full rounded-xl border-2 border-[#f1f5f8] bg-transparent"></iframe>
+            </div>
+
+            <!-- 添加以下按钮，分享到 Codepen, 分享到 CodeSandbox, 下载示例，截图 -->
+            <div node-type="buttonWrapper" class="flex flex-col lg:flex-row justify-center lg:space-x-4 hidden">
+                <!-- 微调按钮，toggle 微调输入框 -->
+                <!-- 分享到 CodePen -->
+            <button node-type="shareToCodePen" title="分享到 CodePen"
+                class="flex items-center px-4 py-2 mb-2 lg:mb-0 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600">
+                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none"
+                    stroke="none">
+                    <path
+                        d="M21.838 8.445c0-.001-.001-.001 0 0l-.003-.004l-.001-.001v-.001a.809.809 0 0 0-.235-.228l-9.164-6.08a.834.834 0 0 0-.898 0L2.371 8.214A.786.786 0 0 0 2 8.897v6.16a.789.789 0 0 0 .131.448v.001l.002.002l.01.015v.002h.001l.001.001l.001.001c.063.088.14.16.226.215l9.165 6.082a.787.787 0 0 0 .448.139a.784.784 0 0 0 .45-.139l9.165-6.082a.794.794 0 0 0 .371-.685v-6.16a.793.793 0 0 0-.133-.452zm-9.057-4.172l6.953 4.613l-3.183 2.112l-3.771-2.536V4.273zm-1.592 0v4.189l-3.771 2.536l-3.181-2.111l6.952-4.614zm-7.595 6.098l2.395 1.59l-2.395 1.611v-3.201zm7.595 9.311l-6.96-4.617l3.195-2.15l3.765 2.498v4.269zm.795-5.653l-3.128-2.078l3.128-2.105l3.131 2.105l-3.131 2.078zm.797 5.653v-4.27l3.766-2.498l3.193 2.15l-6.959 4.618zm7.597-6.11l-2.396-1.611l2.396-1.59v3.201z"
+                        fill="currentColor"></path>
+                </svg>
+            </button>
+
+            <!-- 分享到 CodeSandbox -->
+            <button node-type="shareToCodeSandbox" title="分享到 CodeSandbox"
+                class="flex items-center px-4 py-2 mb-2 lg:mb-0 bg-green-500 text-white rounded-lg shadow-md hover:bg-green-600">
+                <svg class="h-5 w-5" viewbox="0 0 512 512" fill="none" stroke="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M69 153.99L256 263.99M256 263.99L443 153.99M256 263.99V463.99M448 341.37V170.61C447.993 165.021 446.523 159.531 443.735 154.687C440.947 149.843 436.939 145.814 432.11 143L280.11 54.54C272.787 50.2765 264.464 48.0303 255.99 48.0303C247.516 48.0303 239.193 50.2765 231.87 54.54L79.89 143C75.0609 145.814 71.053 149.843 68.2652 154.687C65.4773 159.531 64.0068 165.021 64 170.61V341.37C64.0033 346.962 65.4722 352.456 68.2602 357.304C71.0482 362.152 75.058 366.185 79.89 369L231.89 457.46C239.215 461.718 247.537 463.96 256.01 463.96C264.483 463.96 272.805 461.718 280.13 457.46L432.13 369C436.958 366.182 440.964 362.148 443.748 357.301C446.533 352.453 447.999 346.96 448 341.37Z"
+                        stroke="currentColor" stroke-width="38" stroke-linecap="round" stroke-linejoin="round">
+                    </path>
+                </svg>
+            </button>
+
+            <!-- 下载示例 -->
+            <button node-type="downloadCode" title="下载示例"
+                class="flex items-center px-4 py-2 mb-2 lg:mb-0 bg-slate-500 text-white rounded-lg shadow-md hover:bg-slate-600">
+                <svg class="h-5 w-5" viewbox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    p-id="5105" width="24" height="24" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <path
+                        d="M691.3 693.9c-24.7 0-44.8-20-44.8-44.8 0-24.7 20-44.8 44.8-44.8h40c190.6 0 176.8-274.4 0.2-268.1C671.2 37.2 208 145.1 299 445c-93-73.9-204.6 69.2-109.6 139.8 67.2 49.9 188.5-18.4 188.5 64.3 0 56.3-63.9 44.8-125.3 44.8-149.3 0-241.3-159.3-155.8-281.1 40.8-58.2 104.9-72.6 104.9-72.6C231.4 111.3 492.7-9.5 686.2 120c83.1 55.6 114.5 136.9 114.5 136.9 48.8 14.8 90.7 45.6 119.2 86.4 96 137.3 21.5 350.6-228.6 350.6zM514.2 335.8c0.2 0 0.3 0.1 0.5 0.1s0.3-0.1 0.5-0.1h-1z m177.1 421.1c0-17.5-45.8-17.3-63.3 0.1l-32.8 32.9c-14.1 14.1-38.2 4.2-38.2-15.8V380.6c0-24.5-17.9-44.4-42.3-44.7-24.5 0.3-47.2 20.1-47.2 44.7v393.5c0 19.9-24.1 29.9-38.2 15.8l-32.8-42.1c-17.5-17.5-45.3-9.3-62.8-9.3h-0.2c-17.5 44.8-17.6 55.1-0.1 72.6L449 931.5c35 35 91.6 37.3 126.6 2.3l115.7-114.6c17.5-17.5 0-45.2 0-62.7v0.4z"
+                        p-id="5106" data-spm-anchor-id="a313x.search_index.0.i0.1e433a81Qhk7Pf" class="selected"
+                        fill="#ffffff"></path>
+                </svg>
+            </button>
+
+            <!-- 截图 -->
+            <!-- <button node-type="captureScreenshot" title="截图"
+                class="flex items-center px-4 py-2 mb-2 lg:mb-0 bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-600">
+                <svg class="h-5 w-5" viewbox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    p-id="7136" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24">
+                    <path
+                        d="M355.712 271.872l33.536-95.872h245.504l33.536 95.872c6.72 19.2 24.96 32.128 45.312 32.128h156.8c25.216 0 41.6 18.88 41.6 37.312v469.376c0 18.432-16.384 37.312-41.6 37.312H153.6c-25.216 0-41.6-18.88-41.6-37.312V341.312c0-18.432 16.384-37.312 41.6-37.312h156.8a48 48 0 0 0 45.312-32.128z m31.808-191.872c-38.464 0-74.624 23.488-87.808 61.312L276.352 208H153.6c-73.792 0-137.6 57.536-137.6 133.312v469.376c0 75.776 63.872 133.312 137.6 133.312h716.8c73.728 0 137.6-57.536 137.6-133.312V341.312c0-75.776-63.872-133.312-137.6-133.312h-122.752l-23.36-66.688a92.672 92.672 0 0 0-87.808-61.312h-248.96zM403.2 597.312c0-53.76 46.464-101.312 108.8-101.312 62.4 0 108.928 47.552 108.928 101.312S574.4 698.688 512 698.688c-62.4 0-108.864-47.552-108.864-101.376zM512 400c-110.848 0-204.8 86.144-204.8 197.312 0 111.232 93.952 197.376 204.8 197.376 110.976 0 204.928-86.144 204.928-197.376C716.928 486.144 622.976 400 512 400z"
+                        p-id="7137" data-spm-anchor-id="a313x.search_index.0.i5.1e433a81Qhk7Pf" class="selected"
+                        fill="#ffffff"></path>
+                </svg>
+            </button> -->
+
+            <!-- 全屏 -->
+            <button node-type="fullscreen" title="全屏"
+                class="flex items-center px-4 py-2 mb-2 lg:mb-0 bg-yellow-500 text-white rounded-lg shadow-md hover:bg-yellow-600">
+                <svg t="1739178522591"  class="h-5 w-5" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6043" width="24" height="24"><path d="M149.333333 394.666667c17.066667 0 32-14.933333 32-32v-136.533334l187.733334 187.733334c6.4 6.4 14.933333 8.533333 23.466666 8.533333s17.066667-2.133333 23.466667-8.533333c12.8-12.8 12.8-32 0-44.8l-187.733333-187.733334H362.666667c17.066667 0 32-14.933333 32-32s-14.933333-32-32-32H149.333333c-4.266667 0-8.533333 0-10.666666 2.133334-8.533333 4.266667-14.933333 10.666667-19.2 17.066666-2.133333 4.266667-2.133333 8.533333-2.133334 12.8v213.333334c0 17.066667 14.933333 32 32 32zM874.666667 629.333333c-17.066667 0-32 14.933333-32 32v136.533334L642.133333 597.333333c-12.8-12.8-32-12.8-44.8 0s-12.8 32 0 44.8l200.533334 200.533334H661.333333c-17.066667 0-32 14.933333-32 32s14.933333 32 32 32h213.333334c4.266667 0 8.533333 0 10.666666-2.133334 8.533333-4.266667 14.933333-8.533333 17.066667-17.066666 2.133333-4.266667 2.133333-8.533333 2.133333-10.666667V661.333333c2.133333-17.066667-12.8-32-29.866666-32zM381.866667 595.2l-200.533334 200.533333V661.333333c0-17.066667-14.933333-32-32-32s-32 14.933333-32 32v213.333334c0 4.266667 0 8.533333 2.133334 10.666666 4.266667 8.533333 8.533333 14.933333 17.066666 17.066667 4.266667 2.133333 8.533333 2.133333 10.666667 2.133333h213.333333c17.066667 0 32-14.933333 32-32s-14.933333-32-32-32h-136.533333l200.533333-200.533333c12.8-12.8 12.8-32 0-44.8s-29.866667-10.666667-42.666666 0zM904.533333 138.666667c0-2.133333 0-2.133333 0 0-4.266667-8.533333-10.666667-14.933333-17.066666-17.066667-4.266667-2.133333-8.533333-2.133333-10.666667-2.133333H661.333333c-17.066667 0-32 14.933333-32 32s14.933333 32 32 32h136.533334l-187.733334 187.733333c-12.8 12.8-12.8 32 0 44.8 6.4 6.4 14.933333 8.533333 23.466667 8.533333s17.066667-2.133333 23.466667-8.533333l187.733333-187.733333V362.666667c0 17.066667 14.933333 32 32 32s32-14.933333 32-32V149.333333c-2.133333-4.266667-2.133333-8.533333-4.266667-10.666666z" fill="#ffffff" p-id="6044" data-spm-anchor-id="a313x.search_index.0.i5.21e13a81lKUUmb" class="selected"></path></svg>
+            </button>
+
+            <!-- 微调按钮，toggle 微调输入框 -->
+            <button node-type="adjustButton"
+                class="flex items-center px-4 py-2 mb-2 lg:mb-0 bg-slate-500 text-white rounded-lg shadow-md hover:bg-slate-600">
+                <svg class="h-5 w-5 mr-2" viewbox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    p-id="8749" width="24" height="24">
+                    <path
+                        d="M593.045333 104.32a64 64 0 0 1 90.496 0l119.168 119.168a64 64 0 0 1 0 90.496l-436.266666 436.266667a64 64 0 0 1-37.802667 18.325333l-129.002667 15.104a64 64 0 0 1-71.253333-68.394667l10.176-134.613333a64 64 0 0 1 18.56-40.426667L593.066667 104.32z m-31.829333 152.490667l89.002667 89.002666 77.056-77.077333-88.981334-88.981333-77.077333 77.056z m28.650667 149.333333l-88.981334-88.981333L223.061333 594.986667l-7.637333 100.906666 95.914667-11.221333L589.866667 406.144zM896 938.666667H128v-85.333334h768v85.333334z"
+                        fill="#ffffff" p-id="8750" data-spm-anchor-id="a313x.search_index.0.i1.70ff3a81pNJwiR"
+                        class="selected"></path>
+                </svg>
+                微调
+            </button>
+            </div>
+
+            <div class="relative hidden" node-type="adjustWrapper">
+                <label node-type="adjustLabel"
+                    class="text-sm text-gray-500">在下方输入框中描述您的微调需求，点击微调按钮，即可微调图表；如果对生成的图表很不满意，建议在上方输入框中重新描述您的需求，然后点击
+                    AI 生成按钮。</label>
+                <div class="group conic-gradient-border relative">
+                    <textarea node-type="adjustInput"
+                        class="flex w-full border border-input shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm min-h-20 resize-none rounded-sm bg-background p-4 pl-10 text-lg focus:bg-background focus:ring-0 focus-visible:ring-0"
+                        placeholder="描述你想微调的内容..."></textarea>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-sparkles absolute -translate-y-1/4 left-4 top-[1.35rem] h-5 w-5 text-muted-foreground transition-colors group-focus-within:text-blue-500">
+                        <path
+                            d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z">
+                        </path>
+                        <path d="M20 3v4"></path>
+                        <path d="M22 5h-4"></path>
+                        <path d="M4 17v2"></path>
+                        <path d="M5 18H3"></path>
+                    </svg>
+                </div>
+                <div class="absolute flex gap-2 bottom-4 right-4">
+                    <button node-type="adjustSubmit"
+                        class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
+                        disabled="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-sparkles mr-2 h-4 w-4">
+                            <path
+                                d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z">
+                            </path>
+                            <path d="M20 3v4"></path>
+                            <path d="M22 5h-4"></path>
+                            <path d="M4 17v2"></path>
+                            <path d="M5 18H3"></path>
+                        </svg>微调</button>
+                </div>
+            </div>
+        </div>
+
+        <div node-type="prompts" class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4" style="opacity: 1;">
+            
+        </div>
+    </div>
+</div>
