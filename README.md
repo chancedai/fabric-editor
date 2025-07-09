@@ -83,4 +83,6 @@ npm run dev
 <br/>
 <img src="assets/screenshots/7.png" alt="功能截图" width="600" />
 <br/>
+<img src="assets/screenshots/8.png" alt="功能截图" width="600" />
+<br/>
 
